@@ -76,6 +76,7 @@ class CheckedExceptionsProducer {
             Logger.error(exception);
         }
     }
+
     private void interrupted() throws InterruptedException {
         separateUsageCase("InterruptedException");
         SleepingThread sleepingThread = new SleepingThread();

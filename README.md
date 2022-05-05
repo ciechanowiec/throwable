@@ -9,8 +9,8 @@ Below are listed some of the most common types of `Throwable` in Java. Their usa
 ### Exceptions
 * ClassNotFoundException
 * IOException
-* InterruptedException
 * ParseException
+* InterruptedException
 * RuntimeException:
   * ArithmeticException
   * NullPointerException
@@ -21,3 +21,10 @@ Below are listed some of the most common types of `Throwable` in Java. Their usa
 
 ### Errors
 * StackOverFlowError
+
+### Mnemonics
+Checked exceptions: C **io** P **i**</br>
+Unchecked exceptions: **A** n i i **C**
+
+## Throwable tree
+![tree](src/main/resources/tree.png)
