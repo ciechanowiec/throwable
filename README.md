@@ -1,9 +1,12 @@
-# Exceptions in Java
+# Throwable in Java
 
-This project was created on 2022-05-04 from a template.
+## Description
+This repository is a workshop on `Throwable` in Java, mainly on `Exceptions` subclass. It presents the key points regarding that issue and relevant usage cases.
 
-## Exceptions
+## Types
+Below are listed some of the most common types of `Throwable` in Java. Their usage examples are provided in the `eu.ciechanowiec.exceptions.throwableproducer` package. 
 
+### Exceptions
 * ClassNotFoundException
 * IOException
 * InterruptedException
@@ -15,3 +18,6 @@ This project was created on 2022-05-04 from a template.
   * IllegalArgumentException
   * IllegalStateException
   * ClassCastException
+
+### Errors
+* StackOverFlowError

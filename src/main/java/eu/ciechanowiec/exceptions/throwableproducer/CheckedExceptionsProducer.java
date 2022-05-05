@@ -1,4 +1,4 @@
-package eu.ciechanowiec.exceptions.exceptionsproducer;
+package eu.ciechanowiec.exceptions.throwableproducer;
 
 import org.tinylog.Logger;
 
@@ -10,9 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Herman Ciechanowiec
- */
-
-/**
  * This class shows the usage of checked exceptions
  */
 class CheckedExceptionsProducer {
@@ -37,7 +34,7 @@ class CheckedExceptionsProducer {
             String notExistingClassName = "java.lang.AAAAAAAAAAAAA";
             Class.forName(notExistingClassName);
         } catch (ClassNotFoundException exception) {
-            TimeUnit.SECONDS.sleep(1); // Because the logger can process faster that printing from the 'try' block
+            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }
@@ -58,7 +55,7 @@ class CheckedExceptionsProducer {
             String secondLine = bufferedReader.readLine();
             printToConsole(secondLine);
         } catch (IOException exception) {
-            TimeUnit.SECONDS.sleep(1); // Because the logger can process faster that printing from the 'try' block
+            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }
@@ -75,7 +72,7 @@ class CheckedExceptionsProducer {
             printToConsole("Parsing invalid date representation...");
             dateFormat.parse(invalidDataRepresentation);
         } catch (ParseException exception) {
-            TimeUnit.SECONDS.sleep(1); // Because the logger can process faster that printing from the 'try' block
+            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }
@@ -90,7 +87,6 @@ class CheckedExceptionsProducer {
     }
 
     private class SleepingThread extends Thread {
-
         @Override
         public void run() {
             try {
@@ -100,7 +96,6 @@ class CheckedExceptionsProducer {
                 Logger.error(exception);
             }
         }
-
     }
 
     private void printToConsole(String message) {
