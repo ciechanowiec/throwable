@@ -41,4 +41,6 @@ Unchecked exceptions: **A** n i i **C**
 If system `System.exit(...)` command inside `try` block is executed, the program immediately stops. Even `finally` block is not executed.</br>
 See `eu.ciechanowiec.exceptions.systemexit` package.
 * `finally`</br>
-The `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs. 
+The `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs.
+* Multicatching with `catch (Exception1 | Exception2 e)`
+* 
