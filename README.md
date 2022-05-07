@@ -31,14 +31,14 @@ Unchecked exceptions: **A** n i i **C**
 ## Throwable Tree
 ![tree](src/main/resources/tree.png)
 
-## Key words 
+## Key Words 
 * `throwing`
 * `try`
 * `catch`
 * `finally`
 * `throw new`
 
-## Key points
+## Key Points
 * `System.exit(...)`</br>
   * If system `System.exit(...)` command inside the `try` block is executed, the program immediately stops. Even the `finally` block is not executed
   * See `eu.ciechanowiec.throwable.systemexit` package
@@ -67,7 +67,7 @@ Unchecked exceptions: **A** n i i **C**
   * `return` statement inside a `finally` block will cause any exception that might be thrown in the `try` or `catch` block to be discarded
   * See `eu.ciechanowiec.throwable.misc` package
 
-## Handling caught exceptions
+## Handling Caught Exceptions
 Here are possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
 * modify the caught exception (r.g. change the stack trace)
 * log the exception
@@ -79,10 +79,10 @@ Here are possibilities of how to handle caught exceptions, although not all of t
 
 ## Checked/Unchecked - Controversy
 There is a controversy regarding the division of exceptions in Java on the *checked* and *unchecked* ones.
-##### Arguments in favour of the division:
+##### Arguments in Favour of the Division:
 * Checked exceptions thrown by *critical methods* force to handle them, which improves the program stability
 * Checked exceptions *describe some behaviour of the method* 
-##### Arguments against the division:
+##### Arguments Against the Division:
 * It is possible to develop robust software without checked exceptions (e.g. C++ and C# don't have such a concept)
 * Checked exceptions *violate the open/closed principle*. If a checked exception is thrown from a method and the catch is three levels above, that exception must be declared in the signature of each method in the chain. It means that a change at a low level of the software can force signature changes on many higher levels
 * Checked exceptions *break encapsulation* because all functions in the path of a throw must know about details of that low-level exception.
