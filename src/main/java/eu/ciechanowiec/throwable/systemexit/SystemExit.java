@@ -20,12 +20,12 @@ class SystemExit {
     }
 
     private void exitBeforeException() throws InterruptedException {
-        Printer.separateUsageCase("System exit before exception is thrown");
+        Printer.separateUsageCase("System exit before\nexception is thrown");
         try {
-            Printer.printToConsole("Entered 'try' block");
+            Printer.printToConsole("Entered the 'try' block");
             Printer.printToConsole("Exiting system...");
             System.exit(0);
-            Printer.printToConsole("Throwing exception...");
+            Printer.printToConsole("Throwing an exception...");
             throw new RuntimeException("Sample exception");
         } catch (RuntimeException exception) {
             TimeUnit.SECONDS.sleep(1);
@@ -37,16 +37,16 @@ class SystemExit {
         Printer.separateUsageCase("System exit before exception\n" +
                                   "is thrown with finally");
         try {
-            Printer.printToConsole("Entered 'try' block");
+            Printer.printToConsole("Entered the 'try' block");
             Printer.printToConsole("Exiting system...");
             System.exit(0);
-            Printer.printToConsole("Throwing exception...");
+            Printer.printToConsole("Throwing an exception...");
             throw new RuntimeException("Sample exception");
         } catch (RuntimeException exception) {
             TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         } finally {
-            Printer.printToConsole("Entered 'finally' block");
+            Printer.printToConsole("Entered the 'finally' block");
         }
     }
 }

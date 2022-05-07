@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Herman Ciechanowiec
- * This class shows the usage of StackOverFlowError
+ * This class shows the usage case of a StackOverFlowError
  */
 class ErrorProducer {
 

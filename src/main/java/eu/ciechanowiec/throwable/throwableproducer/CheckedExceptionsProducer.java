@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Herman Ciechanowiec
- * This class shows the usage of checked exceptions
+ * This class shows the usage case of checked exceptions
  */
 class CheckedExceptionsProducer {
 
@@ -88,7 +88,7 @@ class CheckedExceptionsProducer {
         sleepingThread.interrupt();
     }
 
-    private class SleepingThread extends Thread {
+    private static class SleepingThread extends Thread {
         @Override
         public void run() {
             try {

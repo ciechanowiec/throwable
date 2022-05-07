@@ -1,12 +1,12 @@
 # Throwable in Java
 
 ## Description
-This repository is a workshop on `Throwable` in Java, mainly on its `Exception` subclass. It presents the key points regarding that issue and relevant usage cases.
+This repository is a workshop on `Throwable` in Java, mainly on its `Exception` subclass. It presents key points regarding that issue and relevant usage cases.
 
 Run `main` methods in appropriate classes to see how `Throwable` behaves.
 
-## Types
-Below are listed some of the most common types of `Throwable` in Java. Their usage examples are provided in the `eu.ciechanowiec.throwable.throwableproducer` package.
+## Throwable Types
+Below some of the most common types of `Throwable` in Java are listed. Their usage examples are provided in the `eu.ciechanowiec.throwable.throwableproducer` package.
 
 ### Exceptions
 * ClassNotFoundException
@@ -28,7 +28,7 @@ Below are listed some of the most common types of `Throwable` in Java. Their usa
 Checked exceptions: C **io** P **i**</br>
 Unchecked exceptions: **A** n i i **C**
 
-## Throwable tree
+## Throwable Tree
 ![tree](src/main/resources/tree.png)
 
 ## Key words 
@@ -45,24 +45,24 @@ Unchecked exceptions: **A** n i i **C**
 * `finally`
   * The `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs
   * See `eu.ciechanowiec.throwable.finallyshowcase` package
-* Multicatching
+* multicatching
   * With `catch (Exception1 | Exception2 exception)` (`exception` variable is final then)
   * With chained `catch` blocks
   * From the narrower to the broader exception
   * See `eu.ciechanowiec.throwable.multicatch` package
 * try-with-resources
   * one or more resources
-  * resource - any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable`
+  * any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable` can be used as a resource
   * If any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources
   * See `eu.ciechanowiec.throwable.withresources` package
 * operations on an exception:
-  * regarding exception message
-  * regarding exception cause
+  * regarding an exception message
+  * regarding an exception cause
   * regarding suppressed exceptions
-  * regarding exception stack stace
+  * regarding an exception stack stace
   * See `eu.ciechanowiec.throwable.operations` package
-* Miscellaneous
-  * an exception thrown from the `catch` block is propagated as and exception thrown from the outside of the `try-catch` block
+* miscellaneous
+  * an exception thrown from the `catch` block is propagated as an exception thrown from the outside of the `try-catch` block
   * `try-finally` block, without `catch` block is possible, but the exception will be propagated to the caller
   * `return` statement inside a `finally` block will cause any exception that might be thrown in the `try` or `catch` block to be discarded
   * See `eu.ciechanowiec.throwable.misc` package

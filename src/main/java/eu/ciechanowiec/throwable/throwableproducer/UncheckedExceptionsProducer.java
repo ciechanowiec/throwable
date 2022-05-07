@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Herman Ciechanowiec
- * This class shows the usage of unchecked exceptions
+ * This class shows the usage case of unchecked exceptions
  */
 class UncheckedExceptionsProducer {
 
@@ -56,7 +56,7 @@ class UncheckedExceptionsProducer {
         try {
             Printer.separateUsageCase("IndexOutOfBoundsException");
             List<String> list = new ArrayList<>(List.of("the only object"));
-            Printer.printToConsole("Getting an object at an valid index...");
+            Printer.printToConsole("Getting an object at a valid index...");
             list.get(0);
             Printer.printToConsole("Getting an object at an invalid index...");
             list.get(1);

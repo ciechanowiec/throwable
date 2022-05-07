@@ -21,6 +21,7 @@ class Multicatch {
                                   Multicatching with
                                   multiple 'catch' blocks""");
         try {
+            Printer.printToConsole("Entered the 'try' block");
             Printer.printToConsole("Throwing a new exception...");
             throw new RuntimeException("Broader exception");
         } catch (IndexOutOfBoundsException exception) {
@@ -43,6 +44,7 @@ class Multicatch {
                                   Multicatching with a
                                   single 'catch' block""");
         try {
+            Printer.printToConsole("Entered the 'try' block");
             Class.forName("java.lang.String");
             Printer.printToConsole("Throwing a new exception...");
             throw new RuntimeException("Sample exception");
