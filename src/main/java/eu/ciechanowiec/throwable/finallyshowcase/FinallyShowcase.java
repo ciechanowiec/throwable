@@ -1,6 +1,6 @@
-package eu.ciechanowiec.exceptions.finallyshowcase;
+package eu.ciechanowiec.throwable.finallyshowcase;
 
-import eu.ciechanowiec.exceptions.Printer;
+import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
 
 import java.util.concurrent.TimeUnit;
@@ -36,7 +36,7 @@ class FinallyShowcase {
         try {
             Printer.printToConsole("Entered 'try' block");
             Printer.printToConsole("Now an unexpected exception will be thrown...");
-            /* This exception will crash the program,
+            /* The following exception will crash the program,
              * but 'finally' block will be executed anyway: */
             throw new IndexOutOfBoundsException("Unexpected exception");
         } catch (ArithmeticException exception) {
@@ -49,12 +49,12 @@ class FinallyShowcase {
             Printer.printToConsole("Entered 'finally' block");
             Printer.printToConsole("""
                                    Now the program will crash because inside the 'try' block
-                                   an unexpected exception was thrown. However, before crashing,
-                                   the 'finally' block has been executed...""");
+                                       an unexpected exception was thrown. However, before crashing,
+                                       the 'finally' block has been executed...""");
         }
         Printer.printToConsole("""
-                               This line will not be printed, because it
-                               is outside the 'finally' block and the program
-                               has crushed.""");
+                               This line will not be printed, because
+                               it is outside the 'finally' block and
+                               the program has crushed.""");
     }
 }

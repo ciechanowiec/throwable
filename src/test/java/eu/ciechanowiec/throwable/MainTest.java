@@ -1,4 +1,4 @@
-package eu.ciechanowiec.exceptions;
+package eu.ciechanowiec.throwable;
 
 import org.testng.annotations.Test;
 

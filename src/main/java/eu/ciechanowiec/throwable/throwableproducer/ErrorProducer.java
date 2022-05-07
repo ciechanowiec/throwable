@@ -1,5 +1,6 @@
-package eu.ciechanowiec.exceptions.throwableproducer;
+package eu.ciechanowiec.throwable.throwableproducer;
 
+import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
 
 import java.util.concurrent.TimeUnit;
@@ -17,8 +18,8 @@ class ErrorProducer {
 
     private void stackOverFlow() throws InterruptedException {
         try {
-            separateUsageCase("StackOverFlowError");
-            printToConsole("Pushing infinite frames on stack...");
+            Printer.separateUsageCase("StackOverFlowError");
+            Printer.printToConsole("Pushing infinite frames on stack...");
             infiniteRecursion();
         } catch (StackOverflowError stackOverflowError) {
             TimeUnit.SECONDS.sleep(1);
@@ -28,16 +29,5 @@ class ErrorProducer {
 
     private void infiniteRecursion() {
         infiniteRecursion();
-    }
-
-    private void printToConsole(String message) {
-        System.out.println(message);
-    }
-
-    private void separateUsageCase(String exceptionName) {
-        printToConsole(String.format("""
-                                    \n======================
-                                    %s usage case
-                                    ======================""", exceptionName));
     }
 }

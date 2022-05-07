@@ -88,7 +88,7 @@
               <addClasspath>true</addClasspath>
 	          <classpathPrefix>lib/</classpathPrefix> <!-- enables usage of dependencies from .jar
                                                            by copying them into the target folder -->
-              <mainClass>eu.ciechanowiec.exceptions.Main</mainClass>
+              <mainClass>eu.ciechanowiec.throwable.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

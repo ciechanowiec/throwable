@@ -1,4 +1,4 @@
-package eu.ciechanowiec.exceptions;
+package eu.ciechanowiec.throwable;
 
 /**
  * @author Herman Ciechanowiec

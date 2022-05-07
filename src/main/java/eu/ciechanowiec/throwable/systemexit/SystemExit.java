@@ -1,6 +1,6 @@
-package eu.ciechanowiec.exceptions.systemexit;
+package eu.ciechanowiec.throwable.systemexit;
 
-import eu.ciechanowiec.exceptions.Printer;
+import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
 
 import java.util.concurrent.TimeUnit;
@@ -8,11 +8,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Herman Ciechanowiec
  */
-class SystemExitShowcase {
+class SystemExit {
 
     public static void main(String[] args) throws InterruptedException {
-        SystemExitShowcase showcase = new SystemExitShowcase();
-        // Uncomment one of the lines to see the usage case:
+        SystemExit showcase = new SystemExit();
+        /* Uncomment one of the following lines to see the usage case.
+         * Every of those lines stops the program, so don't have
+         * uncommented both lines at the same time: */
 //        showcase.exitBeforeException();
 //        showcase.exitBeforeExceptionWithFinally();
     }

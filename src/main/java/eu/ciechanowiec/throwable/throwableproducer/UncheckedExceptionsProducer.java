@@ -1,5 +1,6 @@
-package eu.ciechanowiec.exceptions.throwableproducer;
+package eu.ciechanowiec.throwable.throwableproducer;
 
+import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ class UncheckedExceptionsProducer {
 
     private void arithmetic() throws InterruptedException {
         try {
-            separateUsageCase("ArithmeticException");
-            printToConsole("Performing valid division...");
+            Printer.separateUsageCase("ArithmeticException");
+            Printer.printToConsole("Performing valid division...");
             int validResult = 10 / 2;
-            printToConsole("Performing invalid division...");
+            Printer.printToConsole("Performing invalid division...");
             int inValidResult = 10 / 0;
         } catch (ArithmeticException exception) {
             TimeUnit.SECONDS.sleep(1);
@@ -38,11 +39,11 @@ class UncheckedExceptionsProducer {
 
     private void nullPointer() throws InterruptedException {
         try {
-            separateUsageCase("NullPointerException");
-            printToConsole("Calling the instance method of an existing object...");
+            Printer.separateUsageCase("NullPointerException");
+            Printer.printToConsole("Calling the instance method of an existing object...");
             String existingObject = "object";
             existingObject.length();
-            printToConsole("Calling the instance method of a non-existing object...");
+            Printer.printToConsole("Calling the instance method of a non-existing object...");
             String nonExistingObject = null;
             nonExistingObject.length();
         } catch (NullPointerException exception) {
@@ -53,11 +54,11 @@ class UncheckedExceptionsProducer {
 
     private void indexOutOfBounds() throws InterruptedException {
         try {
-            separateUsageCase("IndexOutOfBoundsException");
+            Printer.separateUsageCase("IndexOutOfBoundsException");
             List<String> list = new ArrayList<>(List.of("the only object"));
-            printToConsole("Getting an object at an valid index...");
+            Printer.printToConsole("Getting an object at an valid index...");
             list.get(0);
-            printToConsole("Getting an object at an invalid index...");
+            Printer.printToConsole("Getting an object at an invalid index...");
             list.get(1);
         } catch (IndexOutOfBoundsException exception) {
             TimeUnit.SECONDS.sleep(1);
@@ -67,10 +68,10 @@ class UncheckedExceptionsProducer {
 
     private void illegalArgument() throws InterruptedException {
         try {
-            separateUsageCase("IllegalArgumentException");
-            printToConsole("Passing to a function a legal argument...");
+            Printer.separateUsageCase("IllegalArgumentException");
+            Printer.printToConsole("Passing to a function a legal argument...");
             Thread.sleep(100);
-            printToConsole("Passing to a function an illegal argument...");
+            Printer.printToConsole("Passing to a function an illegal argument...");
             Thread.sleep(-100);
         } catch (IllegalArgumentException exception) {
             TimeUnit.SECONDS.sleep(1);
@@ -80,13 +81,13 @@ class UncheckedExceptionsProducer {
 
     private void illegalState() throws InterruptedException {
         try {
-            separateUsageCase("IllegalStateException");
+            Printer.separateUsageCase("IllegalStateException");
             List<String> list = new ArrayList<>(List.of("First element", "Second element"));
-            printToConsole("Putting the application into legal state...");
+            Printer.printToConsole("Putting the application into legal state...");
             Iterator<String> legalIterator = list.iterator();
             legalIterator.next();
             legalIterator.remove();
-            printToConsole("Putting the application into illegal state...");
+            Printer.printToConsole("Putting the application into illegal state...");
             Iterator<String> illegalIterator = list.iterator();
             illegalIterator.remove();
         } catch (IllegalStateException exception) {
@@ -97,25 +98,14 @@ class UncheckedExceptionsProducer {
 
     private void classCast() throws InterruptedException {
         try {
-            separateUsageCase("ClassCastException");
-            printToConsole("Performing legal class cast...");
+            Printer.separateUsageCase("ClassCastException");
+            Printer.printToConsole("Performing legal class cast...");
             Object object = Integer.valueOf(2);
-            printToConsole("Performing illegal class cast...");
+            Printer.printToConsole("Performing illegal class cast...");
             String string = (String) object;
         } catch (ClassCastException exception) {
             TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
-    }
-
-    private void printToConsole(String message) {
-        System.out.println(message);
-    }
-
-    private void separateUsageCase(String exceptionName) {
-        printToConsole(String.format("""
-                                    \n======================
-                                    %s usage case
-                                    ======================""", exceptionName));
     }
 }

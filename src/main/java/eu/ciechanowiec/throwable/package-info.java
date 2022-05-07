@@ -4,4 +4,4 @@
  * Those insertions are made so that when runnning `main` function within IDE the
  * logging is performed in an approptiate moment.
  */
-package eu.ciechanowiec.exceptions;
+package eu.ciechanowiec.throwable;
