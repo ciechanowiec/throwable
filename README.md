@@ -79,10 +79,10 @@ Here are possibilities of how to handle caught exceptions, although not all of t
 
 ## Checked/Unchecked - Controversy
 There is a controversy regarding the division of exceptions in Java on the *checked* and *unchecked* ones.
-Arguments in favour of the division:
+##### Arguments in favour of the division:
 * Checked exceptions thrown by *critical methods* force to handle them, which improves the program stability
 * Checked exceptions *describe some behaviour of the method* 
-Arguments against the division:
+##### Arguments against the division:
 * It is possible to develop robust software without checked exceptions (e.g. C++ and C# don't have such a concept)
 * Checked exceptions *violate the open/closed principle*. If a checked exception is thrown from a method and the catch is three levels above, that exception must be declared in the signature of each method in the chain. It means that a change at a low level of the software can force signature changes on many higher levels
 * Checked exceptions *break encapsulation* because all functions in the path of a throw must know about details of that low-level exception.
