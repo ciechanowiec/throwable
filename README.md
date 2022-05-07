@@ -55,5 +55,11 @@ Unchecked exceptions: **A** n i i **C**
   * resource - any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable`
   * If any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources
   * See `eu.ciechanowiec.throwable.withresources` package
+* operations on an exception:
+  * regarding exception message
+  * regarding exception cause
+  * regarding suppressed exceptions
+  * regarding exception stack stace
+  * See `eu.ciechanowiec.throwable.operations` package
 
 ## Handling exceptions
