@@ -97,8 +97,8 @@ class MiscShowcase {
             Logger.error(exception);
             throw new IllegalStateException("Unexpected exception from the 'catch' block");
         } finally {
-            Printer.printToConsole("Entered the 'finally' block");
             TimeUnit.SECONDS.sleep(1);
+            Printer.printToConsole("Entered the 'finally' block");
             Printer.printToConsole("""
                                    Now the 'return' statement from the 'finally'
                                        block will be executed. That statement will
@@ -124,13 +124,13 @@ class MiscShowcase {
                 Printer.printToConsole("""
                                        Entered 'finally' block after the exception was thrown.
                                            However, that exception wasn't handled and for that
-                                           reason it will be propagated further to the caller""");
+                                           reason it will be propagated further to the caller...""");
             }
         } catch (RuntimeException exception) {
             Printer.printToConsole("""
                                    Now the program got back to the caller of the 'try-finally'
                                        block (without 'catch' block), which received the exception
-                                       thrown from that block and will handle it by logging""");
+                                       thrown from that block and will handle it by logging...""");
             TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }

@@ -40,32 +40,33 @@ Unchecked exceptions: **A** n i i **C**
 
 ## Key Points
 * `System.exit(...)`</br>
-  * If system `System.exit(...)` command inside the `try` block is executed, the program immediately stops. Even the `finally` block is not executed
-  * See `eu.ciechanowiec.throwable.systemexit` package
+  * if the `System.exit(...)` command inside the `try` block is executed, the program immediately stops. Even the `finally` block is not executed
+  * see `eu.ciechanowiec.throwable.systemexit` package
 * `finally`
-  * The `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs
-  * See `eu.ciechanowiec.throwable.finallyshowcase` package
+  * the `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs
+  * an exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block
+  * see `eu.ciechanowiec.throwable.finallyshowcase` package
 * multicatching
-  * With `catch (Exception1 | Exception2 exception)` (`exception` variable is final then)
-  * With chained `catch` blocks
-  * From the narrower to the broader exception
-  * See `eu.ciechanowiec.throwable.multicatch` package
+  * with `catch (Exception1 | Exception2 exception)` (`exception` variable is final then)
+  * with chained `catch` blocks
+  * from the narrower to the broader exception
+  * see `eu.ciechanowiec.throwable.multicatch` package
 * try-with-resources
   * one or more resources
   * any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable` can be used as a resource
-  * If any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources
-  * See `eu.ciechanowiec.throwable.withresources` package
+  * if any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources
+  * see `eu.ciechanowiec.throwable.withresources` package
 * operations on an exception:
   * regarding an exception message
   * regarding an exception cause
   * regarding suppressed exceptions
   * regarding an exception stack stace
-  * See `eu.ciechanowiec.throwable.operations` package
+  * see `eu.ciechanowiec.throwable.operations` package
 * miscellaneous
   * an exception thrown from the `catch` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; however, the `finally` block is executed anyway 
   * the `return` statement inside the `finally` block will cause any (primarily unexpected) exception, that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller
   * `try-finally` block, without the `catch` block is possible, but the exception from the `try` block will be propagated to the caller
-  * See `eu.ciechanowiec.throwable.misc` package
+  * see `eu.ciechanowiec.throwable.misc` package
 
 ## Handling Caught Exceptions
 Here are some possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
@@ -77,7 +78,9 @@ Here are some possibilities of how to handle caught exceptions, although not all
 * change the flow of the program
 * rethrow the caught exception
 
-## Checked/Unchecked - Controversy
+Mnemonics: Mo _**lo**_ re || Per _**swa**_ ch || Reth
+
+## Checked vs Unchecked - Controversy
 There is a controversy regarding the division of exceptions in Java on the *checked* and *unchecked* ones.
 ##### Arguments in Favour of the Division:
 * Checked exceptions thrown by *critical methods* force to handle them, which improves the program stability
