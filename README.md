@@ -62,13 +62,13 @@ Unchecked exceptions: **A** n i i **C**
   * regarding an exception stack stace
   * See `eu.ciechanowiec.throwable.operations` package
 * miscellaneous
-  * an exception thrown from the `catch` block is propagated as an exception thrown from the outside of the `try-catch` block
-  * `try-finally` block, without `catch` block is possible, but the exception will be propagated to the caller
-  * `return` statement inside a `finally` block will cause any exception that might be thrown in the `try` or `catch` block to be discarded
+  * an exception thrown from the `catch` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; however, the `finally` block is executed anyway 
+  * the `return` statement inside the `finally` block will cause any (primarily unexpected) exception, that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller
+  * `try-finally` block, without the `catch` block is possible, but the exception from the `try` block will be propagated to the caller
   * See `eu.ciechanowiec.throwable.misc` package
 
 ## Handling Caught Exceptions
-Here are possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
+Here are some possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
 * modify the caught exception (r.g. change the stack trace)
 * log the exception
 * repack the caught exception into another exception
