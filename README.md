@@ -64,7 +64,7 @@ Unchecked exceptions: **A** n i i **C**
   * see `eu.ciechanowiec.throwable.operations` package
 * miscellaneous
   * an exception thrown from the `catch` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; however, the `finally` block is executed anyway 
-  * the `return` statement inside the `finally` block will cause any (primarily unexpected) exception, that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller
+  * the `return` statement inside the `finally` block will cause any unexpected exception, that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller
   * `try-finally` block, without the `catch` block is possible, but the exception from the `try` block will be propagated to the caller
   * see `eu.ciechanowiec.throwable.misc` package
 

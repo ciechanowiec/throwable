@@ -20,7 +20,8 @@ class OperationsOnExceptions {
         operations.suppressException();
     }
 
-    private void message() {
+    private void message() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("Exception message");
         Printer.printToConsole("Creating exceptions, one with a message and one without...");
         Exception exceptionWithoutMessage = new Exception();
@@ -30,12 +31,13 @@ class OperationsOnExceptions {
                     %s""",
                 exceptionWithoutMessage.getMessage()));
         Printer.printToConsole(String.format("""
-                A message from the exception with the specified message:
+                A message from the exception with a specified message:
                     %s""",
                 exceptionWithMessage.getMessage()));
     }
 
-    private void cause() {
+    private void cause() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("Exception with\na nested cause");
         Printer.printToConsole("Creating an exception with a nested cause exception...");
         ExceptionCause exceptionCauseToPass = new ExceptionCause("I'm a nested cause exception");
@@ -47,6 +49,7 @@ class OperationsOnExceptions {
     }
 
     private void truncateStackTrace() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("Truncating stack trace");
         StackOverflowError error = produceStackOverFlowError();
         Printer.printToConsole("Retrieving a raw stack trace from an error...");
@@ -62,6 +65,7 @@ class OperationsOnExceptions {
     }
 
     private void replaceStackTrace() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("Replacing stack trace");
         StackOverflowError error = produceStackOverFlowError();
         Printer.printToConsole("Creating a mocked stack trace...");
@@ -78,6 +82,7 @@ class OperationsOnExceptions {
     }
 
     private void suppressException() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("Suppressing exception");
         Printer.printToConsole("Creating a suppressed exception...");
         SuppressedException suppressedException = new SuppressedException("I'm a suppressed exception");
@@ -93,7 +98,7 @@ class OperationsOnExceptions {
         Logger.error(retrievedSuppressedException);
     }
 
-    private StackOverflowError produceStackOverFlowError() {
+    private StackOverflowError produceStackOverFlowError() throws InterruptedException {
         try {
             infiniteRecursion();
             return new StackOverflowError("Intended StackOverFlowError");
