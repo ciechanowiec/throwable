@@ -43,8 +43,8 @@ Unchecked exceptions: **A** n i i **C**
   * if the `System.exit(...)` command inside the `try` block is executed, the program immediately stops. Even the `finally` block is not executed
   * see `eu.ciechanowiec.throwable.systemexit` package
 * `finally`
-  * the `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs
-  * an exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block
+  * the `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs (the unexpected exception is propagated to the caller)
+  * an exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; in such a case any unexpected exception thrown from the 'try' block and propagated from there to the caller is suppressed by the exception thrown from the `finally` block
   * see `eu.ciechanowiec.throwable.finallyshowcase` package
 * multicatching
   * with `catch (Exception1 | Exception2 exception)` (`exception` variable is final then)
@@ -53,7 +53,7 @@ Unchecked exceptions: **A** n i i **C**
   * see `eu.ciechanowiec.throwable.multicatch` package
 * try-with-resources
   * one or more resources
-  * any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable` can be used as a resource
+  * any object that implements `java.lang.AutoCloseable` or `java.lang.Closeable` can be used as a resource (both interfaces act the same way)
   * if any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources
   * see `eu.ciechanowiec.throwable.withresources` package
 * operations on an exception:

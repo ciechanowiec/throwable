@@ -19,7 +19,7 @@ class CustomResource implements Closeable {
 
     String readLine() {
         if (isClosed) {
-            throw new RuntimeException("THe resource is closed. Reading is illegal");
+            throw new RuntimeException("The resource is closed. Reading is illegal");
         }
         return produceRandomString();
     }

@@ -40,6 +40,7 @@ class Multicatch {
     }
 
     private void multicatchInSingleBlock() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         Printer.separateUsageCase("""
                                   Multicatching with a
                                   single 'catch' block""");

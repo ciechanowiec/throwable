@@ -14,7 +14,8 @@ class FinallyShowcase {
         FinallyShowcase finallyShowcase = new FinallyShowcase();
         finallyShowcase.finallyWithExpectedException();
         finallyShowcase.finallyWithUnexpectedException();
-        finallyShowcase.exceptionFromFinally();
+        finallyShowcase.exceptionFromFinallyWithExpectedFromTry();
+        finallyShowcase.exceptionFromFinallyWithUnexpectedFromTry();
     }
 
     private void finallyWithExpectedException() throws InterruptedException {
@@ -73,9 +74,12 @@ class FinallyShowcase {
         }
     }
 
-    private void exceptionFromFinally() throws InterruptedException {
+    private void exceptionFromFinallyWithExpectedFromTry() throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
-        Printer.separateUsageCase("exception from\nthe 'finally' block");
+        Printer.separateUsageCase("""
+                exception from the
+                'finally' block with an
+                expected from the 'try' one""");
         try {
             try {
                 Printer.printToConsole("Entered the 'try' block");
@@ -103,6 +107,45 @@ class FinallyShowcase {
             TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
+    }
 
+    private void exceptionFromFinallyWithUnexpectedFromTry() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
+        Printer.separateUsageCase("""
+                exception from the
+                'finally' block with an
+                unexpected from the 'try' one""");
+        try {
+            try {
+                Printer.printToConsole("Entered the 'try' block");
+                Printer.printToConsole("""
+                                       Throwing an unexpected exception. Since the 'finally'
+                                           block throws its own exception, the exception from
+                                           the 'try' block will not be propagated to the
+                                           caller and will be swallowed...""");
+                throw new IllegalStateException("Unexpected exception from the 'try' block");
+            } catch (IndexOutOfBoundsException exception) {
+                Printer.printToConsole("""
+                                       Entered the 'catch' block. Now the caught exception
+                                           from the 'try' block will be logged...""");
+                TimeUnit.SECONDS.sleep(1);
+                Logger.error(exception);
+            } finally {
+                TimeUnit.SECONDS.sleep(1);
+                Printer.printToConsole("""
+                                       Entered the 'finally' block. Now an exception will be thrown.
+                                           That exception will hide the unexpected exception from
+                                           the 'try' block and will be propagated to the caller...""");
+                throw new ArithmeticException("Expected exception from the 'finally' block");
+            }
+        } catch (ArithmeticException exception) {
+            Printer.printToConsole("""
+                                   Now the program got back to the caller of the
+                                       'try-catch-finally' block, which received the
+                                       exception thrown from the 'finally' block and
+                                       will handle it by logging...""");
+            TimeUnit.SECONDS.sleep(1);
+            Logger.error(exception);
+        }
     }
 }
