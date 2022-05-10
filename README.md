@@ -32,11 +32,11 @@ Unchecked exceptions: **A** n i i **C**
 ![tree](src/main/resources/tree.png)
 
 ## Key Words 
-* `throwing`
+* `throws`
 * `try`
 * `catch`
 * `finally`
-* `throw new`
+* `throw`
 
 ## Key Points
 * `System.exit(...)`</br>
