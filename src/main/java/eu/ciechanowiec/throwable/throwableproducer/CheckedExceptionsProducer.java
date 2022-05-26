@@ -23,6 +23,7 @@ class CheckedExceptionsProducer {
         producer.io();
         producer.parse();
         producer.interrupted();
+        producer.numberFormatException();
     }
 
     private void classNotFound() throws InterruptedException {
@@ -86,6 +87,22 @@ class CheckedExceptionsProducer {
         TimeUnit.SECONDS.sleep(2); // To let the thread start before it will be interrupted
         Printer.printToConsole("Interrupting the sleeping thread...");
         sleepingThread.interrupt();
+    }
+
+    private void numberFormatException() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
+        Printer.separateUsageCase("NumberFormatException");
+        try {
+            String validNumberRepresentation = "6";
+            String invalidNumberRepresentation = "six";
+            Printer.printToConsole("Parsing valid number representation...");
+            Integer.parseInt(validNumberRepresentation);
+            Printer.printToConsole("Parsing invalid number representation...");
+            Integer.parseInt(invalidNumberRepresentation);
+        } catch (NumberFormatException exception) {
+            TimeUnit.SECONDS.sleep(1);
+            Logger.error(exception);
+        }
     }
 
     private static class SleepingThread extends Thread {

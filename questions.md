@@ -1,4 +1,4 @@
-BASIC:
+# BASIC:
 Root class/interface for exceptions?
 5 checked exceptions?
 5 unchecked exceptions?
