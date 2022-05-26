@@ -27,7 +27,7 @@ Below some of the most common types of `Throwable` in Java are listed. Their usa
 * ExceptionInInitializerError
 
 ### Mnemonics
-Checked exceptions: C **io** P **i** **N**</br>
+Checked exceptions: C **io** P **i** N</br>
 Unchecked exceptions: **A** n i i **C**
 
 ## Throwable Tree
@@ -74,7 +74,7 @@ Unchecked exceptions: **A** n i i **C**
 Here are some possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
 * modify the caught exception (e.g. change the stack trace)
 * log the exception
-* repack (wrap, chain) the caught exception into another exception, i.e. to set the caught exception as the cause af a new one 
+* repack (wrap, chain) the caught exception into another exception, i.e. set the caught exception as the cause af a new one 
 * perform some logic after catching the exception (e.g. remove the file created inside the `try` block)
 * swallow the caught exception (do nothing)
 * change the flow of the program
