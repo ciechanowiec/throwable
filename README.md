@@ -23,6 +23,7 @@ Below some of the most common types of `Throwable` in Java are listed. Their usa
 
 ### Errors
 * StackOverFlowError
+* AssertionError
 
 ### Mnemonics
 Checked exceptions: C **io** P **i**</br>

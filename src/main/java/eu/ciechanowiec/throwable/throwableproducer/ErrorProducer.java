@@ -11,6 +11,13 @@ import java.util.concurrent.TimeUnit;
  */
 class ErrorProducer {
 
+    // Uncomment the code below to see how ExceptionInInitializerError works:
+//    private static final String VARIABLE_WHICH_WILL_CAUSE_EXCEPTION = exceptionInInitializer();
+//
+//    private static String exceptionInInitializer() {
+//        throw new RuntimeException();
+//    }
+
     public static void main(String[] args) throws InterruptedException {
         ErrorProducer producer = new ErrorProducer();
         producer.stackOverFlow();
