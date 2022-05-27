@@ -41,13 +41,13 @@ Unchecked exceptions: **A** n i i **C**
 * `throw`
 
 ## Key Points
-* `System.exit(...)`</br>
-  * if the `System.exit(...)` command inside the `try` block is executed, the program immediately stops. Even the `finally` block is not executed
-  * see `eu.ciechanowiec.throwable.systemexit` package
 * `finally`
   * the `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs (the unexpected exception is propagated to the caller)
   * an exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; in such a case any unexpected exception thrown from the 'try' block and propagated from there to the caller is suppressed by the exception thrown from the `finally` block
-  * see `eu.ciechanowiec.throwable.finallyshowcase` package
+* `finally` and JVM
+  * the `finally` block may not execute if the JVM exits while the `try` or `catch` code is being executed
+  * for instance, if the `System.exit(...)` command inside the `try` block is executed, the program immediately stops; even the `finally` block is not executed
+  * see `eu.ciechanowiec.throwable.systemexit` package
 * multicatching
   * with `catch (Exception1 | Exception2 exception)` (`exception` variable is final then)
   * with chained `catch` blocks
@@ -74,13 +74,13 @@ Unchecked exceptions: **A** n i i **C**
 Here are some possibilities of how to handle caught exceptions, although not all of those possibilities can be treated as good practice. Some of listed actions can be mixed:  
 * modify the caught exception (e.g. change the stack trace)
 * log the exception
-* repack (wrap, chain) the caught exception into another exception, i.e. set the caught exception as the cause af a new one 
+* chain exceptions, i.e. set the caught exception as the cause af a new one 
 * perform some logic after catching the exception (e.g. remove the file created inside the `try` block)
 * swallow the caught exception (do nothing)
 * change the flow of the program
 * rethrow the caught exception
 
-Mnemonics: Mo _**lo**_ re || Per _**swa**_ ch || Reth
+Mnemonics: Mo _**lo**_ ch || Per _**swa**_ ch || Reth
 
 ## Checked vs Unchecked - Controversy
 There is a controversy regarding the division of exceptions in Java on the *checked* and *unchecked* ones.
@@ -89,5 +89,14 @@ There is a controversy regarding the division of exceptions in Java on the *chec
 * Checked exceptions *describe some behaviour of the method* 
 ##### Arguments Against the Division:
 * It is possible to develop robust software without checked exceptions (e.g. C++ and C# don't have such a concept)
+* Checked exceptions enforce the developer to handle them immediately, what can result in quickly and weakly provided exception handling  
 * Checked exceptions *violate the open/closed principle*. If a checked exception is thrown from a method and the catch is three levels above, that exception must be declared in the signature of each method in the chain. It means that a change at a low level of the software can force signature changes on many higher levels
 * Checked exceptions *break encapsulation* because all functions in the path of a throw must know about details of that low-level exception.
+
+## Sources 
+Sources of knowledge on exceptions:
+1. D. Liang, Introduction to Java Programming and Data Structures, 2019, chapter 12.1-12.9, pp. 475-499
+2. Oracle tutorial on exceptions in Java:<br/>
+   https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html
+3. The Java Language Specification (ch. 11, ch. 14.20):<br/>
+https://docs.oracle.com/javase/specs/jls/se17/html/index.html
