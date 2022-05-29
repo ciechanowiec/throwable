@@ -19,11 +19,9 @@
 ++++
 
 == Description of the Repository
-This repository is a workshop on `Throwable` in Java, mainly on its `Exception` subclass. It presents key points regarding that issue and relevant usage cases.
+This repository is a workshop on `Throwable` in Java, mainly on its `Exception` subclass. It presents key points regarding that issue, relevant usage cases and specific application flows. Besides that there is an extended quiz (file `questions.adoc` stored in the root folder of the repository) to check the knowledge on `Throwable` in Java.
 
 Run `main` methods in appropriate classes to see how `Throwable` types behave.
-
-This readme is supplemented by `questions.adoc` stored in the root folder of the repository.
 
 == General Information about Exceptions
 === Exception in Programming in General
