@@ -18,7 +18,7 @@
 </style>
 ++++
 
-== General Information About Exceptions
+== General Information about Exceptions
 . What is an exception in programming in general?
 
 . What is an exception throwing?
@@ -34,7 +34,7 @@
 
 . Name 5 checked `Exception`++s++ and explain when they can occur?
 
-. Name 5 checked unchecked `Exception`++s++ and explain when they can occur?
+. Name 5 unchecked `Exception`++s++ and explain when they can occur?
 
 . Name 2 `Error`++s++ and explain when they can occur?
 
@@ -50,7 +50,7 @@
 
 . Is it possible to change the stack trace of a caught `Throwable` object without using reflection? If yes, how would you do that?
 
-. Is it possible to change line numbers for the stack trace of a caught `Throwable` object without using reflection? If yes, how would you do that?
+. Is it possible to change line numbers for stack trace elements of a caught `Throwable` object without using reflection? If yes, how would you do that?
 
 == Key Points
 === Keywords
@@ -63,7 +63,7 @@ For every code snippet below answer the following questions:
 . Will the exception from the `try` block be:
 * caught?
 * propagated to the caller?
-. Will `finally` block throw an exception? It yes: will it be propagated to the caller?
+. What will happen to the exception from the `finally` block, if there is any?
 
 .Snippet A
 [source, java]
@@ -128,9 +128,9 @@ try {
 ----
 try {
     System.out.println("Entered the 'try' block");
-} catch (Exception exceptionOne) {
+} catch (RuntimeException exceptionOne) {
     Logger.error(exceptionOne);
-} catch (Exception exceptionTwo) {
+} catch (RuntimeException exceptionTwo) {
     Logger.error(exceptionTwo);
 }
 ----
@@ -306,7 +306,7 @@ No: it's impossible to pass `null` as a resource
 .Snippet B
 [source, java]
 ----
-try (StringBuilder stringBuilder = new StringBuilder()){
+try (StringBuilder stringBuilder = new StringBuilder()) {
     stringBuilder.append("Some text");
 } catch (Exception exception) {
     Logger.error(exception);
@@ -318,6 +318,7 @@ try (StringBuilder stringBuilder = new StringBuilder()){
 ====
 No: it's impossible to pass an object that don't implement `AutoCloseable` or `Closeable` as a resource
 ====
+
 . Is it possible to use 2 resources in the try-with-resources block?
 . What is the difference between `AutoCloseable` or `Closeable`?
 . What method must be implemented in classes that implement `AutoCloseable` or `Closeable`?
@@ -379,12 +380,12 @@ Yes
 . What is exception suppression?
 . Answer the following questions for every code snippet below:
 .. Are there any exceptions that will be suppressed? If yes:
-* What will cause suppressed exceptions?
-* What are those exceptions?
-* What exception will suppress what exception?
-* How to print a stack trace of a suppressed exception?
+* What will cause the suppressed exceptions to appear?
+* Name types of the suppressed exceptions?
+* What exceptions will suppress what exceptions (name types)?
+* How to print stack traces of suppressed exceptions?
 .. Will the `catch` block be executed? If yes, what exception will it catch?
-.. What resources are closed after the code execution?
+.. What resources wille be closed after the code execution?
 .. Will the last line be executed? If no, why?
 +
 .Common code for all snippets
@@ -393,9 +394,9 @@ Yes
 /* 'close()' method of FlawedCustomResource looks like this:
 @Override
 public void close() throws IOException {
+    // CloseException extends RuntimeException
     throw new CloseException("Exception during resource closing occurred");
 }*/
-
 CustomResource customResourceOne = new CustomResource();
 FlawedCustomResource flawedCustomResource = new FlawedCustomResource();
 CustomResource customResourceTwo = new CustomResource();
@@ -406,7 +407,8 @@ CustomResource customResourceTwo = new CustomResource();
 [source, java]
 ----
 try (customResourceOne;
-     flawedCustomResource; // <- there is an exception thrown when 'close()' method of this resource is called
+     flawedCustomResource; /* <- there is an exception thrown when 'close()'
+                                 method of this resource is called */
      customResourceTwo) {
     customResourceOne.readLine();
     flawedCustomResource.readLine();
@@ -435,7 +437,8 @@ System.out.println("Hi, my friend!");
 [source, java]
 ----
 try (customResourceOne;
-     flawedCustomResource;
+     flawedCustomResource; /* <- there is an exception thrown when 'close()'
+                                 method of this resource is called */
      customResourceTwo) {
     customResourceOne.readLine();
     flawedCustomResource.readLine();
@@ -461,7 +464,8 @@ System.out.println("Hi, my friend!");
 [source, java]
 ----
 try (customResourceOne;
-     flawedCustomResource;
+     flawedCustomResource; /* <- there is an exception thrown when 'close()'
+                                 method of this resource is called */
      customResourceTwo) {
     customResourceOne.readLine();
     flawedCustomResource.readLine();
@@ -487,7 +491,8 @@ System.out.println("Hi, my friend!");
 [source, java]
 ----
 try (customResourceOne;
-     flawedCustomResource;
+     flawedCustomResource; /* <- there is an exception thrown when 'close()'
+                                 method of this resource is called */
      customResourceTwo) {
     customResourceOne.readLine();
     flawedCustomResource.readLine();
@@ -564,7 +569,7 @@ No: if a checked exception is caught, then the code inside the `try` block must 
 
 . What will happen if an exception thrown from the `catch` will be thrown?
 
-. If there is an exception from the `catch` will be thrown, will `finally` block be executed?
+. If an exception from the `catch` is thrown, will the `finally` block be executed?
 
 . Will the code in the snippets below compile? If no, why? If yes, what will happen to each of the thrown exceptions?
 +

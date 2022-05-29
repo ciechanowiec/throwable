@@ -3,7 +3,6 @@ package eu.ciechanowiec.throwable.multicatch;
 import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
 
-import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 /**

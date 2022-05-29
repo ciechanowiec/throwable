@@ -23,7 +23,7 @@ This repository is a workshop on `Throwable` in Java, mainly on its `Exception` 
 
 Run `main` methods in appropriate classes to see how `Throwable` types behave.
 
-This readme is supplemented by `Questions.adoc` stored in the root folder.
+This readme is supplemented by `questions.adoc` stored in the root folder of the repository.
 
 == General Information about Exceptions
 === Exception in Programming in General
@@ -48,7 +48,7 @@ The exception handler chosen is said to catch the exception. If the runtime syst
 image::src/main/resources/stack_search.png[width=400,height=415,align="center"]
 
 == Throwable
-`Throwable` is a non-abstract, non-final super-class for `Exception`++s++ and `Error`++s++
+`Throwable` is a non-abstract, non-final super-class for `Exception`++s++ and `Error`++s++.
 
 === Throwable Hierarchy
 [#throwable-hierarchy]
@@ -77,7 +77,8 @@ Below some of the most common types of `Throwable` in Java are listed. Their usa
 . ExceptionInInitializerError
 
 ==== Mnemonics
-Checked exceptions: C **io** P **i** N</br>
+Checked exceptions: C **io** P **i** N
+
 Unchecked exceptions: **A** n i i **C**
 
 === `Throwable` Constructors
@@ -160,7 +161,7 @@ Throwable(String message, Throwable cause)
 
 === `finally`
 . The `finally` block always executes when the `try` block exits. This ensures that the `finally` block is executed even if an unexpected exception occurs (the unexpected exception is propagated to the caller).
-. An exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; in such a case any unexpected exception thrown from the 'try' block and propagated from there to the caller is suppressed by the exception thrown from the `finally` block.
+. An exception thrown from the `finally` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; in such a case any unexpected exception thrown from the `try` block and propagated from there to the caller is suppressed by the exception thrown from the `finally` block.
 . The `finally` block may not execute if the JVM exits while the `try` or `catch` code is being executed. For instance, if the `System.exit(...)` command inside the `try` block is executed, the program immediately stops; even the `finally` block is not executed.
 * See `eu.ciechanowiec.throwable.finally` package.
 
@@ -187,8 +188,8 @@ try {
    Logger.error(exception);
 }
 ----
-. Must be caught from the narrower to the broader exception. Two same types of exceptions cannot be multicaught.
-. In case of inline milticatch only one `exception` variable is possible.
+. Exceptions must be caught from the narrower to the broader one. Two same types of exceptions cannot be multicaught.
+. In case of inline multicatch only one `exception` variable is possible.
 . Types in the inline multicatch block must be disjoint (i.e. that one of them cannot be the subclass of the another one), so that for `IndexOutOfBoundsException` and `RuntimeException` there will be different responses in `catch` blocks. For that reason the following code will not compile:
 +
 [source, java]
@@ -207,8 +208,8 @@ try {
 . One or more resources can be declared in the try-with-resources block.
 . There is no practical difference between `AutoCloseable` and `Closeable` (only historical: `AutoCloseable` was introduced later and `Closeable` extends `AutoCloseable`).
 . To implement `AutoCloseable` or `Closeable`, the `close()` method must be implemented.
-. If any, even unexpected, exception occurs, `close()` methods of all specified resources are called and close those resources.
-. The resources are closed the reverse order from which they were initialized.
+. If any, even unexpected, exception occurs, `close()` methods of all specified resources are called, which closes those resources.
+. The resources are closed in the reverse order from which they were initialized.
 . Resources must be `final`, in that:
 * a local variable declared in a resource specification is implicitly declared `final` if it is not explicitly declared final,
 * an existing variable referred to in a resource specification must be a `final` or effectively `final` variable that is definitely assigned before the try-with-resources statement, or a compile-time error occurs.
@@ -230,9 +231,9 @@ try {
 }
 ----
 
-. An exception thrown from the `catch` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block; however, the `finally` block is executed anyway.
-. The `return` statement inside the `finally` block will cause any unexpected exception, that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller.
-. The `try-finally` block, without the `catch` block is possible, but the exception from the `try` block will be propagated to the caller.
+. An exception thrown from the `catch` block is propagated to the caller as an exception thrown from the outside of the `try-catch` block. However, the `finally` block is executed anyway.
+. The `return` statement inside the `finally` block will cause any unexpected exception that might be thrown in the `try` or `catch` block to be discarded and not propagated to the caller.
+. The `try-finally` block, without the `catch` block, is possible, but the exception from the `try` block will be propagated to the caller.
 . See `eu.ciechanowiec.throwable.misc` package
 
 == Handling Caught Exceptions
@@ -266,9 +267,11 @@ There is a controversy regarding the division of exceptions in Java on the *chec
 
 == Sources 
 Sources of knowledge on exceptions:
-1. D. Liang, Introduction to Java Programming and Data Structures, 2019, chapter 12.1-12.9, pp. 475-499
-2. Oracle tutorials on exceptions in Java:<br/>
-   a) https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html <br/>
-   b) https://dev.java/learn/exceptions/
-3. The Java Language Specification (ch. 11, ch. 14.20):<br/>
+
+. D. Liang, Introduction to Java Programming and Data Structures, 2019, chapter 12.1-12.9, pp. 475-499
+. Oracle tutorials on exceptions in Java:
+.. https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html
+.. https://dev.java/learn/exceptions/
+. The Java Language Specification (ch. 11, ch. 14.20):
++
 https://docs.oracle.com/javase/specs/jls/se17/html/index.html
