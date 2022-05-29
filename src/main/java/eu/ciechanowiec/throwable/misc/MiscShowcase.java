@@ -28,22 +28,23 @@ class MiscShowcase {
                 Printer.printToConsole("Now an exception will be thrown...");
                 throw new RuntimeException("Exception from the 'try' block");
             } catch (RuntimeException exception) {
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Entered the 'catch' block. Now the exception
                                            from the 'try' block will be logged...""");
-                TimeUnit.SECONDS.sleep(1);
                 Logger.error(exception);
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Now the 'catch' block will throw its own exception
                                            and propagate it to the caller...""");
                 throw new RuntimeException("Exception from the 'catch' block");
             }
         } catch (RuntimeException exception) {
+            TimeUnit.SECONDS.sleep(1);
             Printer.printToConsole("""
                                    Now the program got back to the caller of the 'try-catch'
                                        block, which received the exception thrown from the
                                        'catch' block and will handle it by logging...""");
-            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }
@@ -59,28 +60,30 @@ class MiscShowcase {
                 Printer.printToConsole("Now an exception will be thrown...");
                 throw new RuntimeException("Exception from the 'try' block");
             } catch (RuntimeException exception) {
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Entered the 'catch' block. Now the exception
                                            from the 'try' block will be logged...""");
-                TimeUnit.SECONDS.sleep(1);
                 Logger.error(exception);
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Now the 'catch' block will throw its own exception
                                            and propagate it to the caller. However, prior
                                            to that, the 'finally' block will be executed...""");
                 throw new RuntimeException("Exception from the 'catch' block");
             } finally {
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Entered the 'finally' block. It is executed
                                            although the previous 'catch' block has
                                            thrown its own exception...""");
             }
         } catch (RuntimeException exception) {
+            TimeUnit.SECONDS.sleep(1);
             Printer.printToConsole("""
                                    Now the program got back to the caller of the 'try-catch-finally'
                                        block, which received the exception thrown from the
                                        'catch' block and will handle it by logging...""");
-            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }
@@ -121,17 +124,18 @@ class MiscShowcase {
                 Printer.printToConsole("Now an exception will be thrown...");
                 throw new RuntimeException("Intended exception");
             } finally {
+                TimeUnit.SECONDS.sleep(1);
                 Printer.printToConsole("""
                                        Entered 'finally' block after the exception was thrown.
                                            However, that exception wasn't handled and for that
                                            reason it will be propagated further to the caller...""");
             }
         } catch (RuntimeException exception) {
+            TimeUnit.SECONDS.sleep(1);
             Printer.printToConsole("""
                                    Now the program got back to the caller of the 'try-finally'
                                        block (without 'catch' block), which received the exception
                                        thrown from that block and will handle it by logging...""");
-            TimeUnit.SECONDS.sleep(1);
             Logger.error(exception);
         }
     }

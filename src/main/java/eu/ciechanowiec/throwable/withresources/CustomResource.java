@@ -12,9 +12,15 @@ import java.util.stream.IntStream;
 class CustomResource implements Closeable {
 
     private boolean isClosed;
+    private String fileName;
 
     CustomResource() {
         isClosed = false;
+    }
+
+    CustomResource(String fileName) {
+        isClosed = false;
+        this.fileName = fileName;
     }
 
     String readLine() {

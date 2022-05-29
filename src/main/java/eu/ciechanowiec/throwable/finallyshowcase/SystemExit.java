@@ -1,4 +1,4 @@
-package eu.ciechanowiec.throwable.systemexit;
+package eu.ciechanowiec.throwable.finallyshowcase;
 
 import eu.ciechanowiec.throwable.Printer;
 import org.tinylog.Logger;
@@ -13,7 +13,7 @@ class SystemExit {
     public static void main(String[] args) throws InterruptedException {
         SystemExit showcase = new SystemExit();
         /* Uncomment one of the following lines to see the usage case.
-         * Every of those lines stops the program, so don't have
+         * Every of those lines stops the program, so don't leave
          * uncommented both lines at the same time: */
 //        showcase.exitBeforeException();
 //        showcase.exitBeforeExceptionWithFinally();
