@@ -9,15 +9,6 @@
 :toclevels: 5
 :icons: font
 
-// To center the images titles:
-++++
-<style>
-  .imageblock > .title {
-    text-align: inherit;
-  }
-</style>
-++++
-
 == General Information about Exceptions
 . What is an exception in programming in general?
 
