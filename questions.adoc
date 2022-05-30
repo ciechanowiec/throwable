@@ -523,7 +523,7 @@ try {
 .Answer
 [%collapsible]
 ====
-Yes, if `Object` extends `Throwable`
+Yes, if `Object` extends `RuntimeException` or `Error`
 ====
 +
 .Snippet B.1
