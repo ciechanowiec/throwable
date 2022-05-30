@@ -15,12 +15,12 @@ class WithResourcesShowcase {
         WithResourcesShowcase showcase = new WithResourcesShowcase();
 
         showcase.tryWithResourcess_ExceptionDuringClosing();
-//        showcase.tryWithoutResources();
-//        showcase.tryWithResources_OneResource_ExpectedException();
-//        showcase.tryWithResources_OneResource_UnexpectedException();
-//        showcase.tryWithResources_TwoResources_ExpectedException();
-//        showcase.tryWithResources_CustomResource_ExpectedException();
-//        showcase.tryWithResources_ExceptionDuringClosing();
+        showcase.tryWithoutResources();
+        showcase.tryWithResources_OneResource_ExpectedException();
+        showcase.tryWithResources_OneResource_UnexpectedException();
+        showcase.tryWithResources_TwoResources_ExpectedException();
+        showcase.tryWithResources_CustomResource_ExpectedException();
+        showcase.tryWithResources_ExceptionDuringClosing();
     }
 
     private void tryWithResourcess_ExceptionDuringClosing()
