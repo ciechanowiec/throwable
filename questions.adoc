@@ -258,7 +258,7 @@ No: in case of inline multicatch only one `exception` variable is possible
 ====
 
 +
-.Snippet H
+.Snippet F
 [source, java]
 ----
 try {
@@ -350,7 +350,7 @@ try (CustomResource customResource = new CustomResource("ONE.txt")) {
 .Answer
 [%collapsible]
 ====
-No: resources must be `final`
+No: resources are implicitly `final`
 ====
 . Will the code snippet below compile? If no, why?
 +

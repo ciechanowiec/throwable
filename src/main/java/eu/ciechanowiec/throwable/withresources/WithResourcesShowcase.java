@@ -51,6 +51,7 @@ class WithResourcesShowcase {
         } catch (IndexOutOfBoundsException exception) {
             Logger.error(exception);
         }
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Hi, my friend!");
     }
 
