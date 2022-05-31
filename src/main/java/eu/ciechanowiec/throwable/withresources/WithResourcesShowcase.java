@@ -13,46 +13,12 @@ class WithResourcesShowcase {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         WithResourcesShowcase showcase = new WithResourcesShowcase();
-
-        showcase.tryWithResourcess_ExceptionDuringClosing();
         showcase.tryWithoutResources();
         showcase.tryWithResources_OneResource_ExpectedException();
         showcase.tryWithResources_OneResource_UnexpectedException();
         showcase.tryWithResources_TwoResources_ExpectedException();
         showcase.tryWithResources_CustomResource_ExpectedException();
         showcase.tryWithResources_ExceptionDuringClosing();
-    }
-
-    private void tryWithResourcess_ExceptionDuringClosing()
-            throws InterruptedException, IOException {
-        TimeUnit.SECONDS.sleep(1);
-        Printer.separateUsageCase("""
-                                  'try-with-resources'
-                                  [unexpected exception
-                                  when closing]""");
-
-        /* 'close()' method of FlawedCustomResource looks like this:
-        @Override
-        public void close() throws IOException {
-            throw new CloseException("Exception during resource closing occurred");
-        }*/
-
-        CustomResource customResourceOne = new CustomResource();
-        FlawedCustomResource flawedCustomResource = new FlawedCustomResource();
-        CustomResource customResourceTwo = new CustomResource();
-
-        try (customResourceOne;
-             flawedCustomResource;
-             customResourceTwo) {
-            customResourceOne.readLine();
-            flawedCustomResource.readLine();
-            customResourceTwo.readLine();
-            throw new ArithmeticException("I'm an exception from the 'try' block");
-        } catch (IndexOutOfBoundsException exception) {
-            Logger.error(exception);
-        }
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println("Hi, my friend!");
     }
 
     private void tryWithoutResources()
