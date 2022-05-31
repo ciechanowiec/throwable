@@ -48,11 +48,11 @@ image::src/main/resources/tree.png[align="center"]
 Below some of the most common types of `Throwable` in Java are listed. Their usage examples are provided in the `eu.ciechanowiec.throwable.throwableproducer` package.
 
 ==== Exceptions
+. FileNotFoundException
 . ClassNotFoundException
 . IOException
 . ParseException
 . InterruptedException
-. NumberFormatException
 . RuntimeException:
 * ArithmeticException
 * NullPointerException

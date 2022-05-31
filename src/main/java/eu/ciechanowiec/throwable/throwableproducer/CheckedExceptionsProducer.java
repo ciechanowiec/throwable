@@ -19,11 +19,26 @@ class CheckedExceptionsProducer {
         /* Do not change the order of the execution
          * of the methods listed below. It can spoil the result */
         CheckedExceptionsProducer producer = new CheckedExceptionsProducer();
+        producer.fileNotFound();
         producer.classNotFound();
         producer.io();
         producer.parse();
         producer.interrupted();
-        producer.numberFormatException();
+    }
+
+    private void fileNotFound() throws InterruptedException {
+        Printer.separateUsageCase("FileNotFoundException");
+        String path = "MOCKED FILE NAME";
+        File file = new File(path);
+        try {
+            Printer.printToConsole("""
+                    Creating an input stream with not existing file.
+                        It fill cause FileNotFoundException be thrown...""");
+            FileInputStream stream = new FileInputStream(file);
+        } catch (FileNotFoundException exception) {
+            TimeUnit.SECONDS.sleep(1);
+            Logger.error(exception);
+        }
     }
 
     private void classNotFound() throws InterruptedException {
